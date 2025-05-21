@@ -29,7 +29,7 @@ const bookStore = {
         },
         {
             id:5,
-            title: 'You Don’t Know JS',
+            title: "You Don't Know JS",
             author: 'Kyle Simpson',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41T5H8u7fUL._SX331_BO1,204,203,200_.jpg'
         },
@@ -43,5 +43,27 @@ const bookStore = {
     ]
 }
 
-// Write your code here!
+const bookStoreTitle = document.querySelector('#header')
+bookStoreTitle.textContent = bookStore.name
 
+const bookList = document.querySelector('#book-list');
+bookStore.books.forEach(book => {
+    const bookContainer = document.createElement('li');
+    const bookTitle = document.createElement('h3');
+    const bookAuthor = document.createElement('p');
+    const bookImage = document.createElement('img');
+
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+    bookList.appendChild(bookContainer);
+});
+
+// Github bonus challenge: delete element with id "delete-this"
+const toDelete = document.getElementById('delete-this');
+if (toDelete) {
+    toDelete.remove();
+}
